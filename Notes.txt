@@ -1,0 +1,58 @@
+//Hello from JavaScript
+
+// const heading=document.createElement("h1");
+// heading.innerHTML="Hello from JavaSript";
+// const root=document.getElementById("root");
+// //this will put heading inside the root.
+// root.appendChild(heading);
+
+//Hello from React
+    <!-- These two links will inject ReactJS into our code. -->
+    <!-- <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script> -->
+// const heading = React.createElement(
+//   "h1",
+//   { id: "heading" },
+//   "Hello World from ReactJS"
+// );
+// console.log(heading); //returns an object
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// //will convert react element(object) into browser understandable HTML element and places the same into the DOM
+// root.render(heading);
+
+//Nested HTML ELEMENT
+// const parent = React.createElement(
+//   "div",
+//   { id: "parent" },
+//   React.createElement("div", { id: "child" }, [
+//     //array of children
+//     React.createElement("h1", { id: "heading" }, "Hello World from ReactJS"),
+//     React.createElement("h2", { id: "heading2" }, "Hello World from ReactJS"),
+//   ])
+// );
+// console.log(parent);
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+//will convert react element(object) into browser understandable HTML element and places the same into the DOM
+// root.render(parent);
+import React from "react";
+import ReactDOM from "react-dom/client";
+//React Element
+const JSXheading = () => <h1 className="heading">Hello World from JSX</h1>;
+console.log();
+
+//Component Composition:
+const HeadingComponent = () => (
+  <div id="container">
+ {<JSXheading/>}
+    <h2>Hi from Heading Component</h2>
+  </div>
+);
+
+//Root-->under which ReactJS code will be rendered.
+
