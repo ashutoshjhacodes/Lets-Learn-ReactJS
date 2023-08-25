@@ -9,7 +9,7 @@ body {
 .logo-container > img {
   height: 100%;
 }
-.logo-img{
+.logo-img {
   height: 60%;
   width: 60%;
 }
@@ -37,16 +37,16 @@ body {
   margin: 20px;
   padding: 20px;
 }
-.search{
-    margin: 10px;
-    padding: 10px;
+.search {
+  margin: 10px;
+  padding: 10px;
 }
-.resCard-container{
-    display: flex;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    margin: 1%;
-    padding: 10px;
+.resCard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1%;
+  padding: 10px;
 }
 .res-cards {
   width: 300px;
@@ -61,34 +61,42 @@ body {
   width: 100%;
   height: 55%;
 }
-.res-info{
+.res-info {
   text-align: center;
   padding: 5px;
   margin: 5px;
 }
-.filter-btn{
+.filter-btn {
   cursor: pointer;
   font-weight: bold;
 }
-.shim-container{
+.shim-container {
   display: flex;
   flex-wrap: wrap;
 }
-.shim-card{
+.shim-card {
   width: 225px;
   height: 400px;
   background-color: #f0f0f0;
   margin: 20px;
 }
-.search,.login{
+.search,
+.login {
   width: 100px;
   height: 50px;
   margin-top: 5px;
   cursor: pointer;
 }
-.filter{
+.filter {
   display: flex;
   margin: 5px;
   padding: 5px;
   align-items: space-between;
+}
+.user{
+  border: 2px solid black;
+  display: inline-block;
+  background-color: rgb(232, 161, 161);
+  margin: 5px;
+  padding: 5px;
 }

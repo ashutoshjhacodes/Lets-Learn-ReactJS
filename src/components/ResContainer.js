@@ -1,6 +1,7 @@
 import ResCards from "./ResCards";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const ResContainer = () => {
   const [listOfRes, setListOfRes] = useState([]);
@@ -41,7 +42,9 @@ const ResContainer = () => {
             className="search"
             onClick={() => {
               //filter on the basis of search
-              fil=listOfRes.filter((res) => res.data.name.toLowerCase().includes(searchText.toLowerCase()));
+              fil = listOfRes.filter((res) =>
+                res.data.name.toLowerCase().includes(searchText.toLowerCase())
+              );
               console.log({ searchText });
               setFilList(fil);
             }}
@@ -65,8 +68,13 @@ const ResContainer = () => {
       </div>
       <div className="resCard-container">
         {/* ResCards */}
-        {filList.map((resturant) => (
-          <ResCards key={resturant.id} resData={resturant} />
+        {filList.map((restaurant) => (
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurants/" + restaurant.info.id}
+          >
+            <ResCards resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>
