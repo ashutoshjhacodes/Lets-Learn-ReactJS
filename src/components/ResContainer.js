@@ -1,12 +1,14 @@
-import ResCards from "./ResCards";
+import ResCards, { withPromptedLabel } from "./ResCards";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const ResContainer = () => {
   const [listOfRes, setListOfRes] = useState([]);
   const [filList, setFilList] = useState([]);
   const [searchText, setSearchText] = useState([]);
+  const RestaurantMenuPromoted = withPromptedLabel(ResCards);
   useEffect(() => {
     fetchData();
   }, []);
@@ -25,21 +27,30 @@ const ResContainer = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const onLinestatus = useOnlineStatus();
+  if (onLinestatus === false)
+    return (
+      <h1>
+        Look like you are offline !! Please check your internet connection.
+      </h1>
+    );
+
   //CONDITIONAL RENDERING
   // console.log("After UseEffect");
   return listOfRes.length === 0 ? (
     <Shimmer />
   ) : (
     <div className="res-container">
-      <div className="filter">
-        <div className="search-container">
+      <div className="filter flex ">
+        <div className="search-container m-4 p-4 flex">
           <input
-            className="input"
+            className="input border border-solid border-black"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
           <button
-            className="search"
+            className="search px-4 py-1 bg-green-200 m-2 rounded-lg "
             onClick={() => {
               //filter on the basis of search
               fil = listOfRes.filter((res) =>
@@ -53,7 +64,7 @@ const ResContainer = () => {
           </button>
         </div>
         <button
-          className="filter-btn"
+          className="filter-btn bg-gray-200 px-2 py-2 m-8 rounded-lg "
           onClick={() => {
             const filteredresList = listOfRes.filter(
               (res) => res?.data?.avgRating > 4
@@ -66,14 +77,18 @@ const ResContainer = () => {
           Top Rated Resturants
         </button>
       </div>
-      <div className="resCard-container">
+      <div className="resCard-container flex flex-wrap px-2 m-16">
         {/* ResCards */}
         {filList.map((restaurant) => (
           <Link
             key={restaurant.info.id}
             to={"/restaurants/" + restaurant.info.id}
           >
-            <ResCards resData={restaurant} />
+            {restaurant.info.promoted ? (
+              <RestaurantMenuPromoted resData={restaurant}/>
+            ) : (
+              <ResCards resData={restaurant} />
+            )}
           </Link>
         ))}
       </div>

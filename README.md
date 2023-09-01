@@ -11,5 +11,25 @@ Body: search
 Footer:
         copyright
         links
-        adress contact
+        address contact
 */
+
+#2 TYPES OF ROUTING:
+
+CLIENT SIDE ROUTING
+SERVER SIDE ROUTING
+
+
+
+#REDUX TOOLKIT
+-install @reduxjs/toolkit and react-redux
+- build our store
+-connect our store to our app
+-slice(cartSLice)
+-dispatch(action)
+-selector
+
+
+
+
+
